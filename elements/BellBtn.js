@@ -6,14 +6,15 @@ const audioSource = require('../assets/DEFAULT_SOUNDS/Bell.mp3');
 export default function BellBtn() {
     const player = useAudioPlayer(audioSource);
     player.loop = true;
-
+   
     const handlePressIn = () => {
-        player.seekTo(0);
-        player.play();   
+        player.seekTo(0); 
+        player.play();  
     };
 
     const handlePressOut = () => {
         player.pause();
+
     };
 
     return (

@@ -6,16 +6,25 @@ const audioSource = require('../elements/SONS_TESTE/teste1.mp3');
 
 function MuteAllBtn() {
     const player = useAudioPlayer(audioSource);
+    let playing = false;
 
-    const handlePressIn = () => {
+    const handlePress = () => {
+        playing = !playing;
+
+        if(playing){
+            player.play();   
+        } else {
+            player.pause(); 
+        }
+        
         player.seekTo(0);
-        player.play();   
+
     };
 
 
     return (
         <TouchableOpacity className="border-4 rounded-xl p-2 bg-[#FF4040]"
-             onPressIn={handlePressIn}
+             onPress={handlePress}
         >
             <Image source={require('../assets/ICONS/stop.png')}  className="w-20 h-20"/>
         </TouchableOpacity>
