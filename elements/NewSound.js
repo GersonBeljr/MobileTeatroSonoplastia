@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {Image, TouchableOpacity} from 'react-native';
-import { useAudioPlayer } from 'expo-audio';
+
 
 function NewSound() {
    
