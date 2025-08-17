@@ -8,7 +8,7 @@ function ProjectBox() {
 
     return (
         <View className="gap-2">
-            <ProjBtn boxTxt="Projeto 4"/>
+            <ProjBtn boxTxt="teste"/>
             <NewProject/>
         </View>  
     )

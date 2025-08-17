@@ -32,7 +32,11 @@ export default function App() {
         <View className="flex-1 justify-between">
           <ScrollView>
             <View className="flex-row gap-5 flex-wrap p-4 ">
-              <SoundBtn boxTxt="Som 1"/>
+              <SoundBtn 
+                soundAddress={require('./elements/SONS_TESTE/tiro.mp3')}
+                boxTxt="Play"
+                loop={false}
+              />
               <NewSound/>
             </View>
           </ScrollView>
