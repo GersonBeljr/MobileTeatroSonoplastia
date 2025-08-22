@@ -39,7 +39,7 @@ function SoundBtn({soundAddress, boxTxt ,loop}) {
 
     return (
         <TouchableOpacity 
-            className={`border-4 rounded-xl border-[#FC822D] justify-center p-6 w-1/5`}
+            className={`border-4 rounded-xl border-[#FC822D] justify-center p-6 w-1/6 overflow-hidden`}
             style={{backgroundColor: isPlaying ? activationColor : defaultColor}}
             onPress={handlePress}
             >
