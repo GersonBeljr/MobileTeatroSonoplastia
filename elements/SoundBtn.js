@@ -5,32 +5,32 @@ import { useAudioPlayer } from 'expo-audio';
 let activationColor = "#FC822D";
 let defaultColor = "black";
 
-function SoundBtn({soundAddress, boxTxt ,loop}) {
+function SoundBtn({ soundAddress, boxTxt, loop }) {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const player = useAudioPlayer(soundAddress);
     player.loop = loop;
 
-/*
---------- Modelo de botão ---------
-<SoundBtn 
-  soundAddress={require('../elements/SONS_TESTE/teste1.mp3')}
-  boxTxt="Play"
-  loop={true/false}
-/>
-*/
+    /*
+    --------- Modelo de botão ---------
+    <SoundBtn 
+      soundAddress={require('../elements/SONS_TESTE/teste1.mp3')}
+      boxTxt="Play"
+      loop={true/false}
+    />
+    */
 
     player.addListener('playbackStatusUpdate',
-        status =>{
+        status => {
             if (status.didJustFinish) {
                 setIsPlaying(!isPlaying);
             }
         })
 
-    const handlePress = () =>{
+    const handlePress = () => {
         if (isPlaying) {
             player.pause();
-        } else {  
+        } else {
             player.play();
         }
         player.seekTo(0);
@@ -38,16 +38,16 @@ function SoundBtn({soundAddress, boxTxt ,loop}) {
     };
 
     return (
-        <TouchableOpacity 
+        <TouchableOpacity
             className={`border-4 rounded-xl border-[#FC822D] justify-center p-6 w-1/6 overflow-hidden`}
-            style={{backgroundColor: isPlaying ? activationColor : defaultColor}}
+            style={{ backgroundColor: isPlaying ? activationColor : defaultColor }}
             onPress={handlePress}
-            >
-            <Text 
+        >
+            <Text
                 className="text-2xl font-bold text-center text-[#FC822D]"
-                style={{color: isPlaying ? defaultColor : activationColor }}
+                style={{ color: isPlaying ? defaultColor : activationColor }}
             >{boxTxt}</Text>
-        </TouchableOpacity>    
+        </TouchableOpacity>
     )
 }
 

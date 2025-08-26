@@ -1,17 +1,17 @@
-{ 
-"version" : "1",
-"sets" : [
+{
+  "version": "1",
+  "sets": [
     {
-    "setId": "1",
-    "setName": "primeiro set",
-    "sons": [
+      "setId": "1",
+      "setName": "primeiro set",
+      "sons": [
         {
-        "sondId":"1",
-        "name": "som teste",
-        "address": "./elements/SONS_TESTE/testiculo.mp3", 
-        "loop": "false"
+          "sondId": "1",
+          "name": "som teste",
+          "address": "./elements/SONS_TESTE/testiculo.mp3",
+          "loop": "false"
         }
-    ]
+      ]
     }
-]
+  ]
 }

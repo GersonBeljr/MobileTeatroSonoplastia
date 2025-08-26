@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import {TouchableOpacity, View, Text, Alert} from 'react-native';
+import { TouchableOpacity, View, Text, Alert } from 'react-native';
 
 function Estrutura() {
-    const  [t1, setName] = useState("");
+    const [t1, setName] = useState("");
 
     return (
-        
+
         <View>
-        
-            <TouchableOpacity onPress={()=>{
-                    setName("Te amor Demais");
-                    Alert.alert("Meu bem");
-                }
+
+            <TouchableOpacity onPress={() => {
+                setName("Te amor Demais");
+                Alert.alert("Meu bem");
+            }
             }>
                 <Text>Clique</Text>
             </TouchableOpacity>
@@ -20,7 +20,7 @@ function Estrutura() {
                 {t1}
             </Text>
 
-        </View>       
+        </View>
     )
 }
 
