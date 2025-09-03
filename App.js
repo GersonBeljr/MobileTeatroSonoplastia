@@ -13,6 +13,7 @@ import MuteAllBtn from './elements/MuteAllBtn';
 import ConfigBtn from './elements/ConfigBtn';
 import ProjBtn from './elements/ProjectBtn';
 import NewProject from './elements/NewProject';
+import VolumeSlider from './elements/VolumeSlider';
 
 //Elementos de arquivos de salvamento
 import * as FileSystem from 'expo-file-system';
@@ -20,10 +21,11 @@ import * as FileSystem from 'expo-file-system';
 //Caminho do arquivo de configuração
 const CONFIG_FILE = FileSystem.documentDirectory + "soundsaveconfig.json";
 
-//Variaveis de controle
-let configMode = false;
-
 export default function App() {
+  const [configMode, setConfigMode] = useState(false);
+  const [project, setProjects] = useState(null);
+  const [selectSet, setSelectSet] = useState(0);
+  const [volume, setVolume] = useState(1);
 
 
   //Verificando e criar arquivo JSON de configuração
@@ -37,14 +39,92 @@ export default function App() {
           "version": "1",
           "sets": [
             {
-              "setId": "1",
+              "setId": "0",
               "setName": "primeiro set",
-              "sonds": [
+              "sounds": [
                 {
-                  "sondId": "1",
-                  "name": "som teste2",
-                  "address": "./elements/SONS_TESTE/testiculo.mp3",
-                  "loop": "false"
+                  "soundId": "1",
+                  "name": "1s",
+                  "address": require('./elements/SONS_TESTE/tiro.mp3'),
+                  "loop": false
+                },
+                {
+                  "soundId": "2",
+                  "name": "2s",
+                  "address": require('./elements/SONS_TESTE/teste1.mp3'),
+                  "loop": false
+                }
+              ]
+            },
+            {
+              "setId": "1",
+              "setName": "Segundo set",
+              "sounds": [
+                {
+                  "soundId": "3",
+                  "name": "2s",
+                  "address": require('./elements/SONS_TESTE/teste1.mp3'),
+                  "loop": false
+                }
+              ]
+            },
+            {
+              "setId": "2",
+              "setName": "Terceiro set",
+              "sounds": [
+                {
+                  "soundId": "4",
+                  "name": "3s",
+                  "address": require('./elements/SONS_TESTE/teste2.mp3'),
+                  "loop": false
+                }
+              ]
+            },
+            {
+              "setId": "2",
+              "setName": "Quarto set",
+              "sounds": [
+                {
+                  "soundId": "5",
+                  "name": "4s",
+                  "address": require('./elements/SONS_TESTE/teste3.mp3'),
+                  "loop": false
+                }
+              ]
+            },
+            {
+              "setId": "2",
+              "setName": "Quinto set",
+              "sounds": [
+                {
+                  "soundId": "6",
+                  "name": "5s",
+                  "address": require('./elements/SONS_TESTE/testiculo.mp3'),
+                  "loop": false
+                }
+              ]
+            },
+            {
+              "setId": "2",
+              "setName": "Sexto set",
+              "sounds": [
+                {
+                  "soundId": "7",
+                  "name": "6s",
+                  "address": require('./elements/SONS_TESTE/testiculo.mp3'),
+                  "loop": false
+                }
+              ]
+            },
+            {
+              "setId": "2",
+              "setName": "Setimo set",
+              "sounds": [
+                {
+                  "soundId": "8",
+                  "name": "7s",
+                  "address": require('./elements/SONS_TESTE/testiculo.mp3'),
+                  "loop": false
                 }
               ]
             }
@@ -52,22 +132,17 @@ export default function App() {
         };
 
         await FileSystem.writeAsStringAsync(CONFIG_FILE, JSON.stringify(initialData));
-        setProjects(initialData.sets);
+        setProjects(initialData);
       } else {
         const content = await FileSystem.readAsStringAsync(CONFIG_FILE);
         const json = JSON.parse(content);
-        //Alert.alert("test" + json.sets[0].sonds[0].name);
-        setProjects(json.sets);
+        //Alert.alert("test" + json.sets[0].setId);
+        setProjects(json);
       }
-
-
     };
 
     loadConfig();
   }, []);
-
-
-
 
   return (
 
@@ -76,13 +151,21 @@ export default function App() {
         <Text className="text-4xl text-center text-[#FFFFFF]">Projetos</Text>
         <ScrollView className="p-2 h-5/6">
           <View className="gap-2">
-
+            {project && project.sets.map((set, setId) => (
+              <ProjBtn 
+                key={setId}
+                id={setId}
+                setSelectSet={setSelectSet} 
+                boxTxt={set.setName} 
+                />
+            ))}
+            
             <NewProject />
           </View>
         </ScrollView>
         <View className=" justify-center">
           <View className="flex-row gap-2 justify-around">
-            <MuteAllBtn />
+            <MuteAllBtn setVolume={setVolume}/>
             <BellBtn />
           </View>
         </View>
@@ -97,12 +180,28 @@ export default function App() {
         <View className="flex-1 justify-between">
           <ScrollView>
             <View className="flex-row gap-5 flex-wrap p-4 border-4">
-              <NewSound />
+              {project && project.sets[selectSet].sounds.map((sound) => (
+                <SoundBtn
+                  key={sound.soundId}
+                  soundAddress={sound.address}
+                  boxTxt={sound.name}
+                  loop={sound.loop}
+                  configMode={configMode}
+                  volumeNow={volume}
+                />
+              ))}
+              {configMode && <NewSound />}
             </View>
           </ScrollView>
           <View className="flex-row justify-between">
-            <Text className="text-4xl text-[#FC822D]">Volume</Text>
-            <ConfigBtn configMode={`${configMode}`} />
+            <VolumeSlider 
+              setVolume={setVolume}
+              volume={volume}
+            />
+            <ConfigBtn
+              configMode={configMode}
+              setConfigMode={setConfigMode}
+            />
           </View>
         </View>
       </View>

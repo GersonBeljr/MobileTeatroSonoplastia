@@ -2,14 +2,92 @@
   "version": "1",
   "sets": [
     {
-      "setId": "1",
+      "setId": "0",
       "setName": "primeiro set",
-      "sons": [
+      "sounds": [
         {
-          "sondId": "1",
-          "name": "som teste",
+          "soundId": "1",
+          "name": "1s",
           "address": "./elements/SONS_TESTE/testiculo.mp3",
-          "loop": "false"
+          "loop": false
+        },
+        {
+          "soundId": "1",
+          "name": "2s",
+          "address": "./elements/SONS_TESTE/testiculo.mp3",
+          "loop": false
+        }
+      ]
+    },
+    {
+      "setId": "1",
+      "setName": "Segundo set",
+      "sounds": [
+        {
+          "soundId": "1",
+          "name": "2s",
+          "address": "./elements/SONS_TESTE/testiculo.mp3",
+          "loop": false
+        }
+      ]
+    },
+    {
+      "setId": "2",
+      "setName": "Terceiro set",
+      "sounds": [
+        {
+          "soundId": "1",
+          "name": "3s",
+          "address": "./elements/SONS_TESTE/testiculo.mp3",
+          "loop": false
+        }
+      ]
+    },
+    {
+      "setId": "2",
+      "setName": "Quarto set",
+      "sounds": [
+        {
+          "soundId": "1",
+          "name": "4s",
+          "address": "./elements/SONS_TESTE/testiculo.mp3",
+          "loop": false
+        }
+      ]
+    },
+    {
+      "setId": "2",
+      "setName": "Quinto set",
+      "sounds": [
+        {
+          "soundId": "1",
+          "name": "5s",
+          "address": "./elements/SONS_TESTE/testiculo.mp3",
+          "loop": false
+        }
+      ]
+    },
+    {
+      "setId": "2",
+      "setName": "Sexto set",
+      "sounds": [
+        {
+          "soundId": "1",
+          "name": "6s",
+          "address": "./elements/SONS_TESTE/testiculo.mp3",
+          "loop": false
+        }
+      ]
+    },
+    {
+      "setId": "2",
+      "setName": "Setimo set",
+      "sounds": [
+        {
+          "soundId": "1",
+          "name": "7s",
+          "address": "./elements/SONS_TESTE/testiculo.mp3",
+          "loop": false
         }
       ]
     }
